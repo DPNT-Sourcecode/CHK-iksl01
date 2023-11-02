@@ -9,10 +9,10 @@ class TestCheckout:
         assert checkout_solution.checkout('ABCDAACA') == 130+30+20+15+20+50
     
     def test_checkout_5A_deal(self):
-        assert checkout_solution.checkout('ABCDAAAACA') == 500+30+20+15+20+50
+        assert checkout_solution.checkout('ABCDAAAACA') == 200+30+20+15+20+50
 
     def test_checkout_both_A_deal(self):
-        assert checkout_solution.checkout('ABCDAAAACAAA') == 500+130+30+20+15+20
+        assert checkout_solution.checkout('ABCDAAAACAAA') == 200+130+30+20+15+20
     
     def test_checkout_B_deal(self):
         assert checkout_solution.checkout('ABCBBBD') == 45+45+50+20+15
