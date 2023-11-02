@@ -34,8 +34,5 @@ def checkout(skus):
             total+=(deal_total+remainder)
         else:
             total+=sku_map[k]*v
+        print(total)
     return total
-
-
-
-
