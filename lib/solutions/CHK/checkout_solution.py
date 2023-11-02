@@ -17,14 +17,17 @@ def checkout(skus):
     checkout_map = Counter(skus)
     for k,v in checkout_map.items():
         if k=='A':
-            deal_total = (v//3)*130
-            remainder = (v%3)*sku_map[k]
-            total+=(deal_total+remainder)
+            five_deal_total = (v//5)*500
+            five_deal_remainder = v%5
+            three_deal_total = (five_deal_remainder//3)*130
+            three_deal_remainder = (v%3)*sku_map[k]
+            total+=(five_deal_total+three_deal_total+three_deal_remainder)
         elif k=='E':
             total_B_free=v//2
             sku_map['B']-=total_B_free
             if sku_map['B']<0:
                sku_map['B']=0 
+            total+=sku_map[k]*v
         elif k=='B':
             deal_total = (v//2)*45
             remainder = (v%2)*sku_map[k]
@@ -32,4 +35,5 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
