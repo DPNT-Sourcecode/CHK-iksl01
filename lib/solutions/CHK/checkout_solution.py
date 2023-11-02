@@ -9,7 +9,7 @@
 from collections import Counter 
 import re
 def checkout(skus):
-    if bool(re.match('^[ABCDE]*$', skus)) is False:
+    if bool(re.match('^[ABCDEF]*$', skus)) is False:
         return -1
 
     total = 0
@@ -33,12 +33,14 @@ def checkout(skus):
                 total+=(deal_total+remainder)
         elif k=='F':
             if v>=3:
-                total_F_free=v//2
+                total_F_free=v//3
                 v=v-total_F_free
             total+=sku_map[k]*v
         else:
             total+=sku_map[k]*v
+        print(total)
     return total
+
 
 
 
