@@ -9,17 +9,22 @@
 from collections import Counter 
 import re
 def checkout(skus):
-    if bool(re.match('^[ABCD]*$', skus)) is False:
+    if bool(re.match('^[ABCDE]*$', skus)) is False:
         return -1
 
     total = 0
-    sku_map = {'A':50, 'B':30, 'C':20, 'D':15}
+    sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40}
     checkout_map = Counter(skus)
     for k,v in checkout_map.items():
         if k=='A':
             deal_total = (v//3)*130
             remainder = (v%3)*sku_map[k]
             total+=(deal_total+remainder)
+        elif k=='E':
+            total_B_free=v//2
+            sku_map['B']-=total_B_free
+            if sku_map['B']<0:
+               sku_map['B']=0 
         elif k=='B':
             deal_total = (v//2)*45
             remainder = (v%2)*sku_map[k]
@@ -27,3 +32,4 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
