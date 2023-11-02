@@ -13,4 +13,11 @@ class TestCheckout:
     
     def test_checkout_both_deals(self):
         assert checkout_solution.checkout('ABCDAAB') == 130+45+20+15
+    
+    def test_checkout_empty(self):
+        assert checkout_solution.checkout('') == 0
+    
+    def test_checkout_invalid(self):
+        assert checkout_solution.checkout('ABCDG') == -1
+
 

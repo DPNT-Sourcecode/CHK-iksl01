@@ -9,7 +9,7 @@
 from collections import Counter 
 import re
 def checkout(skus):
-    if bool(re.match('^[ABCD]+$', skus)) is False:
+    if bool(re.match('^[ABCD]*$', skus)) is False:
         return -1
 
     total = 0
@@ -27,5 +27,6 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
