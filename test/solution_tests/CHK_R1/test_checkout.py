@@ -19,5 +19,3 @@ class TestCheckout:
     
     def test_checkout_invalid(self):
         assert checkout_solution.checkout('ABCDG') == -1
-
-
