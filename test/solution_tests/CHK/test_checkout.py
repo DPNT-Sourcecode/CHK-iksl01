@@ -33,4 +33,3 @@ class TestCheckout:
         assert checkout_solution.checkout('ABCDEG') == -1
     
     
-
