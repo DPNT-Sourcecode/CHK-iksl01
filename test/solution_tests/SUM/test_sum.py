@@ -7,5 +7,3 @@ class TestSum():
     
     def test_sum_large(self):
         assert sum_solution.compute(10000, 2200) == 12200
-
-
