@@ -28,6 +28,9 @@ class TestCheckout:
     
     def test_checkout_F_deal(self):
         assert checkout_solution.checkout('ABCFFFDEFFF') == 50+30+20+15+40+10+10+10+10
+    
+    def test_checkout_M_deal(self):
+        assert checkout_solution.checkout('NNNM') == 40+40+40
 
     def test_checkout_empty(self):
         assert checkout_solution.checkout('') == 0
@@ -36,4 +39,5 @@ class TestCheckout:
         assert checkout_solution.checkout('ABCDE1') == -1
     
     
+
 
