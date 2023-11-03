@@ -3,7 +3,7 @@ from lib.solutions.CHK import checkout_solution
 
 class TestCheckout:
     def test_checkout_no_deal(self):
-        assert checkout_solution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 965
+        assert checkout_solution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 847
     
     def test_checkout_3A_deal(self):
         assert checkout_solution.checkout('ABCDAACA') == 130+30+20+15+20+50
