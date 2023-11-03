@@ -23,7 +23,7 @@ def checkout(skus):
     if bool(re.match('^[A-Z]*$', skus)) is False:
         return -1
     total = 0
-    sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':80, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
+    sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
     checkout_map = Counter(skus)
     total=0
     combo_deal_count=checkout_map['X']+checkout_map['Y']+checkout_map['Z']+checkout_map['S']+checkout_map['T']
@@ -57,7 +57,7 @@ def checkout(skus):
             five_deal_total, five_deal_remainder = buy_x_get_for_y(ten_deal_remainder,5,45)
             total+=(ten_deal_total+five_deal_total+(five_deal_remainder*sku_map[k]))
         elif k=='K':
-            deal_total, remainder = buy_x_get_for_y(v,2,150)
+            deal_total, remainder = buy_x_get_for_y(v,2,120)
             total+=deal_total+remainder*sku_map[k]
         elif k=='M':
             M_left = buy_x_get_y_free_remaining(checkout_map['N'],v,3)
@@ -82,6 +82,7 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
 
