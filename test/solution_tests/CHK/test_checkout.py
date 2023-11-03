@@ -1,39 +1,39 @@
-from lib.solutions.CHK import checkout_solution
+from lib.solutions.CHK.checkout_solution import Checkout
 
 
 class TestCheckout:
     def test_checkout_no_deal(self):
-        assert checkout_solution.checkout('ABCDEF') == 50+30+20+15+40+10
+        assert Checkout.checkout('ABCDEF') == 50+30+20+15+40+10
     
     def test_checkout_3A_deal(self):
-        assert checkout_solution.checkout('ABCDAACA') == 130+30+20+15+20+50
+        assert Checkout.checkout('ABCDAACA') == 130+30+20+15+20+50
     
     def test_checkout_5A_deal(self):
-        assert checkout_solution.checkout('ABCDAAAACA') == 200+30+20+15+20+50
+        assert Checkout.checkout('ABCDAAAACA') == 200+30+20+15+20+50
 
     def test_checkout_both_A_deal(self):
-        assert checkout_solution.checkout('ABCDAAAACAAA') == 200+130+30+20+15+20
+        assert Checkout.checkout('ABCDAAAACAAA') == 200+130+30+20+15+20
     
     def test_checkout_B_deal(self):
-        assert checkout_solution.checkout('ABCBBBD') == 45+45+50+20+15
+        assert Checkout.checkout('ABCBBBD') == 45+45+50+20+15
     
     def test_checkout_E_deal(self):
-        assert checkout_solution.checkout('ABCDEE') == 50+20+15+40+40
+        assert Checkout.checkout('ABCDEE') == 50+20+15+40+40
     
     def test_checkout_B_and_E_deals(self):
-        assert checkout_solution.checkout('ABCDBEE') == 50+30+20+15+40+40
+        assert Checkout.checkout('ABCDBEE') == 50+30+20+15+40+40
     
     def test_checkout_3A_and_B_deals(self):
-        assert checkout_solution.checkout('ABCDAAB') == 130+45+20+15
+        assert Checkout.checkout('ABCDAAB') == 130+45+20+15
     
     def test_checkout_F_deal(self):
-        assert checkout_solution.checkout('ABCFFFDEFFF') == 50+30+20+15+40+10+10+10+10
+        assert Checkout.checkout('ABCFFFDEFFF') == 50+30+20+15+40+10+10+10+10
 
     
     def test_checkout_empty(self):
-        assert checkout_solution.checkout('') == 0
+        assert Checkout.checkout('') == 0
     
     def test_checkout_invalid(self):
-        assert checkout_solution.checkout('ABCDEG') == -1
+        assert Checkout.checkout('ABCDEG') == -1
     
     
