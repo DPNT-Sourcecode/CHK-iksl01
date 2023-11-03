@@ -33,7 +33,7 @@ class TestCheckout:
         assert checkout_solution.checkout('NNNM') == 40+40+40
     
     def test_combo_deal(self):
-        assert checkout_solution.checkout('ZZYXZST') == 45+45+17
+        assert checkout_solution.checkout('ZZYXZST') == 45+45+17+20
 
     def test_checkout_empty(self):
         assert checkout_solution.checkout('') == 0
