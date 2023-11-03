@@ -4,8 +4,8 @@ import re
 #     def __init__(self):
 #         pass
 
-    #where count_x is the number of x it takes to get a free y and num_x
-def buy_x_get_y_free_remaining(x, num_x, num_y, count_x):  
+#where count_x is the number of x it takes to get a free y
+def buy_x_get_y_free_remaining(num_x, num_y, count_x):  
     y_free= num_x//count_x
     y_left = num_y-y_free
     if y_left<=0:
@@ -38,14 +38,23 @@ def checkout(skus):
             # three_deal_remainder = (five_deal_remainder%3)*sku_map[k]
             # total+=(five_deal_total+three_deal_total+three_deal_remainder)
         elif k=='B':
-            total_B_free=checkout_map['E']//2
-            B_left = v-total_B_free
-            if B_left<=0:
+            B_left = buy_x_get_y_free_remaining(checkout_map['E'],v,2)
+            if B_left==0:
                 total+=0
             else:
                 deal_total = (B_left//2)*45
                 remainder = (B_left%2)*sku_map[k]
                 total+=(deal_total+remainder)
+
+            
+            # total_B_free=checkout_map['E']//2
+            # B_left = v-total_B_free
+            # if B_left<=0:
+            #     total+=0
+            # else:
+            #     deal_total = (B_left//2)*45
+            #     remainder = (B_left%2)*sku_map[k]
+            #     total+=(deal_total+remainder)
         elif k=='F':
             if v>=3:
                 total_F_free=v//3
@@ -54,4 +63,5 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
