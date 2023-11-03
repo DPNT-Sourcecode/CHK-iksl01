@@ -30,7 +30,7 @@ def checkout(skus):
         if k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
             three_deal_total, three_deal_remainder = buy_x_get_for_y(five_deal_remainder,3,130)
-            total+=(five_deal_total+three_deal_total+three_deal_remainder)
+            total+=(five_deal_total+three_deal_total+(three_deal_remainder*sku_map[k]))
 
             # five_deal_total = (v//5)*200
             # five_deal_remainder = v%5
@@ -54,3 +54,4 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
