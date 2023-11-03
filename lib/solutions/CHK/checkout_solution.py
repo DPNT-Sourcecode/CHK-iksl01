@@ -32,7 +32,7 @@ def checkout(skus):
             if B_left==0:
                 total+=0
             else:
-                deal_total, remainder = buy_x_get_for_y(v,2,45)
+                deal_total, remainder = buy_x_get_for_y(B_left,2,45)
                 total+=(deal_total+remainder*sku_map[k])
         elif k=='F':
             F_left=buy_x_get_y_free_remaining(v,v,3)
@@ -55,7 +55,7 @@ def checkout(skus):
             if Q_left==0:
                 total+=0
             else:
-                deal_total, remainder = buy_x_get_for_y(v,3,80)
+                deal_total, remainder = buy_x_get_for_y(Q_left,3,80)
                 total+=deal_total+(remainder*sku_map[k])
         elif k=='U':
             U_left=buy_x_get_y_free_remaining(v,v,4)
@@ -67,3 +67,4 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
