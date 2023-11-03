@@ -1,6 +1,6 @@
 
 class Deals:
-    def __init__(k,v,sku_map):
+    def __init__(self, k,v,sku_map):
         k=k
         v=v
         sku_map=sku_map
@@ -63,19 +63,19 @@ class Deals:
     deal_map['H'] = deal_H
     deal_map['I'] = no_deal
     deal_map['J'] = no_deal
-    deal_map['K'] = deal_K
-    deal_map['L'] = no_deal
-    deal_map['M'] = no_deal
-    deal_map['N'] = deal_N
-    deal_map['O'] = no_deal
-    deal_map['P'] = deal_P
-    deal_map['Q'] = deal_Q
-    deal_map['R'] = deal_R
-    deal_map['S'] = no_deal
-    deal_map['T'] = no_deal
-    deal_map['U'] = deal_U
-    deal_map['V'] = deal_V
-    deal_map['W'] = no_deal
-    deal_map['X'] = no_deal
-    deal_map['Y'] = no_deal
-    deal_map['Z'] = no_deal
+    # deal_map['K'] = deal_K
+    # deal_map['L'] = no_deal
+    # deal_map['M'] = no_deal
+    # deal_map['N'] = deal_N
+    # deal_map['O'] = no_deal
+    # deal_map['P'] = deal_P
+    # deal_map['Q'] = deal_Q
+    # deal_map['R'] = deal_R
+    # deal_map['S'] = no_deal
+    # deal_map['T'] = no_deal
+    # deal_map['U'] = deal_U
+    # deal_map['V'] = deal_V
+    # deal_map['W'] = no_deal
+    # deal_map['X'] = no_deal
+    # deal_map['Y'] = no_deal
+    # deal_map['Z'] = no_deal

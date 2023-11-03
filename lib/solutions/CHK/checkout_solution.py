@@ -1,7 +1,7 @@
 from collections import Counter 
 import re
 
-from CHK.deal_map import Deals
+from lib.solutions.CHK.deal_map import Deals
 # class Checkout:
 #     def __init__(self):
 #         pass
