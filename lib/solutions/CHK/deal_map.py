@@ -1,10 +1,10 @@
 
 class Deals:
-    def __init__(self, k,v,sku_map):
+    def __init__(self, k,v,sku_map, checkout_map, total):
         k=k
         v=v
         sku_map=sku_map
-        counter_map=counter_map
+        checkout_map=checkout_map
         total = total
 
     def buy_x_get_y_free_remaining(self, num_x, num_y, count_x):  
@@ -79,3 +79,4 @@ class Deals:
     # deal_map['X'] = no_deal
     # deal_map['Y'] = no_deal
     # deal_map['Z'] = no_deal
+
