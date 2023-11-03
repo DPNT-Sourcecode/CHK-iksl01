@@ -68,7 +68,3 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(total)
     return total
-
-
-
-
