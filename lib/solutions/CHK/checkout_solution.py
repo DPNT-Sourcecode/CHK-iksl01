@@ -32,18 +32,18 @@ def checkout(skus):
     if 'Z' in checkout_map:
         print('YES')
         if combo_deal_count>=3:
-                combo_deal_count-=checkout_map['V']
+                combo_deal_count-=checkout_map['Z']
         else:
             total+=sku_map['Z']*checkout_map['Z']
     if 'S' in checkout_map:
         if combo_deal_count>=3:
-                combo_deal_count-=checkout_map['V']
+                combo_deal_count-=checkout_map['S']
         else:
             total+=sku_map['S']*checkout_map['S']
     print(total)
     if checkout_map['T']:
         if combo_deal_count>=3:
-            combo_deal_count-=checkout_map['V']
+            combo_deal_count-=checkout_map['T']
         else:
             total+=sku_map['T']*checkout_map['T']
     print(total, combo_deal_count)
@@ -124,6 +124,7 @@ def checkout(skus):
         # print(combo_deal_count)
         # print(total)
     return total
+
 
 
 
