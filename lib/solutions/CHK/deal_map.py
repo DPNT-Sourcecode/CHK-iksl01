@@ -79,4 +79,3 @@ class Deals:
     # deal_map['X'] = no_deal
     # deal_map['Y'] = no_deal
     # deal_map['Z'] = no_deal
-
