@@ -1,13 +1,6 @@
 from collections import Counter 
 import re
 
-from lib.solutions.CHK.deal_map import Deals
-# class Checkout:
-#     def __init__(self):
-#         pass
-
-#where count_x is the number of x it takes to get a free y
-
 def buy_x_get_y_free_remaining(num_x, num_y, count_x):  
         y_free= num_x//count_x
         y_left = num_y-y_free
@@ -22,7 +15,7 @@ def buy_x_get_for_y(num_x, count_x, deal_value):
 
 
 def checkout(skus):
-    if bool(re.match('^[ABCDEF]*$', skus)) is False:
+    if bool(re.match('^[A-Z]*$', skus)) is False:
         return -1
 
     total = 0
@@ -30,8 +23,6 @@ def checkout(skus):
     checkout_map = Counter(skus)
     total=0
     for k,v in checkout_map.items():
-        # d = Deals(k,v,sku_map,checkout_map,total)
-        # total = d.deal_map[k]
         if k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
             three_deal_total, three_deal_remainder = buy_x_get_for_y(five_deal_remainder,3,130)
@@ -41,9 +32,8 @@ def checkout(skus):
             if B_left==0:
                 total+=0
             else:
-                deal_total = (B_left//2)*45
-                remainder = (B_left%2)*sku_map[k]
-                total+=(deal_total+remainder)
+                deal_total, remainder = buy_x_get_for_y(v,2,45)
+                total+=(deal_total+remainder*sku_map[k])
         elif k=='F':
             F_left=buy_x_get_y_free_remaining(v,v,3)
             total+=sku_map[k]*F_left
@@ -51,8 +41,29 @@ def checkout(skus):
             ten_deal_total, ten_deal_remainder = buy_x_get_for_y(v,10,80)
             five_deal_total, five_deal_remainder = buy_x_get_for_y(ten_deal_remainder,5,45)
             total+=(ten_deal_total+five_deal_total+(five_deal_remainder*sku_map[k]))
-        elif k==
-        
+        elif k=='K':
+            deal_total, remainder = buy_x_get_for_y(v,2,150)
+            total+=deal_total+remainder
+        elif k=='M':
+            M_left = buy_x_get_y_free_remaining(checkout_map['N'],v,3)
+            total=M_left*sku_map[k]
+        elif k=='P':
+            deal_total, remainder = buy_x_get_for_y(v,5,200)
+            total+=deal_total+(remainder*sku_map[k])
+        elif k=='Q':
+            Q_left = buy_x_get_y_free_remaining(checkout_map['R'],v,3)
+            if Q_left==0:
+                total+=0
+            else:
+                deal_total, remainder = buy_x_get_for_y(v,3,80)
+                total+=deal_total+(remainder*sku_map[k])
+        elif k=='U':
+            U_left=buy_x_get_y_free_remaining(v,v,4)
+            total+=sku_map[k]*U_left
+        elif k=='V':
+            three_deal_total,three_deal_remainder = buy_x_get_for_y(v,3,130)
+            two_deal_total, two_deal_remainder = buy_x_get_for_y(three_deal_remainder,2,90)
+            total+=(three_deal_total+two_deal_total+(two_deal_remainder*sku_map[k]))
         else:
             total+=sku_map[k]*v
     return total
