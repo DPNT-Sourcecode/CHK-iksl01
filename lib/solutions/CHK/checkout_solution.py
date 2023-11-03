@@ -56,7 +56,7 @@ def checkout(skus):
             #     remainder = (B_left%2)*sku_map[k]
             #     total+=(deal_total+remainder)
         elif k=='F':
-            F_left=buy_x_get_y_free_remaining(v,v,2)
+            F_left=buy_x_get_y_free_remaining(v,v,3)
             total+=sku_map[k]*F_left
 
         #     if v>=3:
@@ -66,6 +66,7 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
 
