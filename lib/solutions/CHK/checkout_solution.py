@@ -29,27 +29,49 @@ def checkout(skus):
     total=0
     combo_deal_count=checkout_map['X']+checkout_map['Y']+checkout_map['Z']+checkout_map['S']+checkout_map['T']
     total+=(combo_deal_count//3)*45
-    if checkout_map['Z']:
+    if 'Z' in checkout_map:
         if combo_deal_count>=3:
-                combo_deal_count-=v
+                combo_deal_count-=checkout_map['V']
         else:
             total+=sku_map['Z']*checkout_map['Z']
+    if 'S' in checkout_map:
+        if combo_deal_count>=3:
+                combo_deal_count-=checkout_map['V']
+        else:
+            total+=sku_map['S']*checkout_map['S']
+    if checkout_map['T']:
+        if combo_deal_count>=3:
+                combo_deal_count-=checkout_map['V']
+        else:
+            total+=sku_map['T']*checkout_map['T']
+    if checkout_map['U']:
+        if combo_deal_count>=3:
+                combo_deal_count-=checkout_map['V']
+        else:
+            total+=sku_map['U']*checkout_map['U']
+    if checkout_map['V']:
+        if combo_deal_count>=3:
+                combo_deal_count-=checkout_map['V']
+        else:
+            total+=sku_map['V']*checkout_map['V']
     for k,v in checkout_map.items():
-        if k=='Z':
-            if combo_deal_count>=3:
-                combo_deal_count-=v
-            else:
-                total+=sku_map[k]*v
-        elif k in ['S','T','Y']:
-            if combo_deal_count<3:
-                total+=sku_map[k]*v
-            else:
-                combo_deal_count-=v
-        elif k=='X':
-            if combo_deal_count>=3:
-                combo_deal_count-=v
-            else:
-                total+=sku_map[k]*v
+        if k in ['S','T','Y', 'X', 'Z']:
+            continue
+        # if k=='Z':
+        #     if combo_deal_count>=3:
+        #         combo_deal_count-=v
+        #     else:
+        #         total+=sku_map[k]*v
+        # elif k in ['S','T','Y']:
+        #     if combo_deal_count<3:
+        #         total+=sku_map[k]*v
+        #     else:
+        #         combo_deal_count-=v
+        # elif k=='X':
+        #     if combo_deal_count>=3:
+        #         combo_deal_count-=v
+        #     else:
+        #         total+=sku_map[k]*v
         elif k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
             three_deal_total, three_deal_remainder = buy_x_get_for_y(five_deal_remainder,3,130)
@@ -97,4 +119,5 @@ def checkout(skus):
         print(combo_deal_count)
         print(total)
     return total
+
 
