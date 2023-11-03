@@ -13,6 +13,22 @@ def buy_x_get_for_y(num_x, count_x, deal_value):
     remainder = num_x%count_x
     return deal_total, remainder
 
+def combo_deal(k,v, combo_deal_count,sku_map, total):
+    if combo_deal_count>=3:
+        combo_deal_count-=v
+    else:
+        total+=sku_map[k]*v
+    
+
+#combinations could be all three diff, two of one, three of one
+#take count of each and add together, divide by three for 45 deal 
+#most beneficial for them would be for Z, then Y,S,T in deal and pay full for X
+#start with 'Z', then 'Y', S,T,X
+#deal_count increases at the end divisible by three
+#e.g. ZZXYSTZ
+#ZZZ in deal, then YST, X full price
+#combo count = 3, 1, 1, 1
+
 
 def checkout(skus):
     if bool(re.match('^[A-Z]*$', skus)) is False:
@@ -22,8 +38,14 @@ def checkout(skus):
     sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':80, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':30, 'T':20, 'U':40, 'V':50, 'W':20, 'X':90, 'Y':10,'Z':50}
     checkout_map = Counter(skus)
     total=0
+    combo_deal_count=0
+    combo_map = {}
     for k,v in checkout_map.items():
-        if k=='A':
+        if k in ['S','T','X','Y','Z']:
+            combo_deal_count+=v
+        if k=='Z':
+            combo_deal(v,)
+        elif k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
             three_deal_total, three_deal_remainder = buy_x_get_for_y(five_deal_remainder,3,130)
             total+=(five_deal_total+three_deal_total+(three_deal_remainder*sku_map[k]))
@@ -68,3 +90,4 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(total)
     return total
+
