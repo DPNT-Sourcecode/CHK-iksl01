@@ -43,6 +43,9 @@ class TestCheckout:
     
     def test_combo_deal_4(self):
         assert checkout_solution.checkout('SSSZ') == 45+20
+    
+    def test_combo_deal_5(self):
+        assert checkout_solution.checkout('SSSZZZZXT') == 45+45+20+20+17
 
     
     
