@@ -22,7 +22,6 @@ def combo_deal(k,v, combo_deal_count,sku_map, total):
 def checkout(skus):
     if bool(re.match('^[A-Z]*$', skus)) is False:
         return -1
-    total = 0
     sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
     checkout_map = Counter(skus)
     total=0
@@ -37,14 +36,14 @@ def checkout(skus):
     deal_num = deal_count-(deal_count%3)
     combo_count=0
     for k,v in combo_map.items():
-        
+        print(k)
         while combo_count<deal_num:
             letter_count=0
             while letter_count<v:
-                letter_count+1
+                letter_count+=1
             checkout_map[k]-=letter_count
             combo_count+=letter_count
-        print(k,combo_count,letter_count)
+        # print(k,combo_count,letter_count)
     total+=(deal_count//3)*45
             
 
@@ -110,5 +109,6 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
