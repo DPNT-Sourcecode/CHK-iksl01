@@ -37,8 +37,7 @@ def checkout(skus):
     deal_num = deal_count-(deal_count%3)
     if deal_num==deal_count:
         for l in ['Z', 'S', 'T', 'Y','X']:
-            checkout_map[l]==0
-        print(checkout_map)
+            checkout_map[l]=0
     else:
         combo_count=0
         for k,v in combo_map.items():
@@ -50,7 +49,7 @@ def checkout(skus):
                     letter_count+=1
                 # checkout_map[k]-=letter_count
                 # print(k,checkout_map[k])
-                combo_count+=letter_count
+            combo_count+=letter_count
         print(combo_count)
         print(combo_map)
         print(checkout_map)
@@ -104,6 +103,7 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(k,total)
     return total
+
 
 
 
