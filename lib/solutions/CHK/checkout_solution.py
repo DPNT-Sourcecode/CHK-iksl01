@@ -26,17 +26,41 @@ def checkout(skus):
     sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
     checkout_map = Counter(skus)
     total=0
-    combo_deal_count=checkout_map['X']+checkout_map['Y']+checkout_map['Z']+checkout_map['S']+checkout_map['T']
-    remainder = combo_deal_count%3
-    print(remainder)
-    total+=(combo_deal_count//3)*45
+    # combo_deal_count=checkout_map['X']+checkout_map['Y']+checkout_map['Z']+checkout_map['S']+checkout_map['T']
+    # remainder = combo_deal_count%3
+    # print(remainder)
+    # total+=(combo_deal_count//3)*45
+    combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
-        if l in checkout_map:
-            if combo_deal_count<=remainder:
-                total+=sku_map[l]*checkout_map[l]  
-            else:
-                combo_deal_count-=checkout_map[l]
-        print(total, combo_deal_count)
+        combo_map[l]=checkout_map[l]
+    deal_count = sum(combo_map.values())
+    deal_num = deal_count-(deal_count%3)
+    combo_count=0
+    for k,v in combo_map:
+        while combo_count<deal_num:
+            letter_count=0
+            while letter_count<v:
+                letter_count+1
+            checkout_map[k]-=letter_count
+            combo_count+=letter_count
+    total+=(deal_count//3)*45
+            
+
+
+        
+        
+        
+        # if l in checkout_map:
+        #     if combo_deal_count<=remainder:
+        #         total+=sku_map[l]*checkout_map[l]  
+        #     else:
+
+        #         combo_deal_count-=checkout_map[l]
+        # print(total, combo_deal_count)
+
+    #map for combo letters
+    #starting from Z we add the values until we reach combo//2
+    #when we do 
     for k,v in checkout_map.items():
         if k in ['S','T','Y', 'X', 'Z']:
             pass
@@ -84,3 +108,4 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
