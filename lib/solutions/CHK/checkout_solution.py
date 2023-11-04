@@ -33,33 +33,23 @@ def checkout(skus):
     
     deal_count = sum(combo_map.values())
     total+=(deal_count//3)*45
-    print(total)
     deal_num = deal_count-(deal_count%3)
-    if deal_num==deal_count:
-        for l in ['Z', 'S', 'T', 'Y','X']:
-            checkout_map[l]=0
-    else:
-        combo_count=0
-        for k,v in combo_map.items():
-            print(k,v)
-            while combo_count<deal_num:
-                letter_count=0
-                # combo_count+=1
-                while letter_count<v and combo_count+letter_count<deal_num:
-                    letter_count+=1
-                    # combo_count+=letter_count
-                checkout_map[k]-=letter_count
-                print(k,checkout_map[k])
-                combo_count+=letter_count
-                break
-        print(combo_count)
-        print(combo_map)
-        print(checkout_map)
-#simply if v of any combo letter is greater than 
-
+    # if deal_num==deal_count:
+    #     for l in ['Z', 'S', 'T', 'Y','X']:
+    #         checkout_map[l]=0
+    # else:
+    combo_count=0
+    for k,v in combo_map.items():
+        print(k,v)
+        while combo_count<deal_num:
+            letter_count=0
+            # combo_count+=1
+            while letter_count<v and combo_count+letter_count<deal_num:
+                letter_count+=1
+            checkout_map[k]-=letter_count
+            combo_count+=letter_count
+            break
     for k,v in checkout_map.items():
-        # if k in ['S','T','Y', 'X', 'Z']:
-        #     pass
         if k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
             three_deal_total, three_deal_remainder = buy_x_get_for_y(five_deal_remainder,3,130)
@@ -105,4 +95,5 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(k,total)
     return total
+
 
