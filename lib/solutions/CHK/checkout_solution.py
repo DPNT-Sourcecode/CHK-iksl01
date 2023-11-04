@@ -27,14 +27,15 @@ def checkout(skus):
     checkout_map = Counter(skus)
     total=0
     combo_deal_count=checkout_map['X']+checkout_map['Y']+checkout_map['Z']+checkout_map['S']+checkout_map['T']
-    print(combo_deal_count)
+    remainder = combo_deal_count%3
+    print(remainder)
     total+=(combo_deal_count//3)*45
     for l in ['Z', 'S', 'T', 'Y','X']:
         if l in checkout_map:
-            if combo_deal_count!=(combo_deal_count%3):
-                combo_deal_count-=checkout_map[l]
+            if combo_deal_count<=remainder:
+                total+=sku_map[l]*checkout_map[l]  
             else:
-                total+=sku_map[l]*checkout_map[l]
+                combo_deal_count-=checkout_map[l]
         print(total, combo_deal_count)
     for k,v in checkout_map.items():
         if k in ['S','T','Y', 'X', 'Z']:
@@ -83,4 +84,5 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
