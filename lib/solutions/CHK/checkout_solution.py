@@ -36,14 +36,17 @@ def checkout(skus):
     total+=(deal_count//3)*45
     deal_num = deal_count-(deal_count%3)
     combo_count=0
-    while combo_count<deal_num:
-        for k,v in combo_map.items():
+    for k,v in combo_map.items():
+        print(k,v)
+        while combo_count<deal_num:
             letter_count=0
-            while letter_count<v:
-                letter_count+=1
-            checkout_map[k]-=letter_count
-            print(k,checkout_map[k])
+            combo_count+=1
+            # while letter_count<v:
+            #     letter_count+=1
+            # checkout_map[k]-=letter_count
+            # print(k,checkout_map[k])
         combo_count+=letter_count
+    print(combo_count)
     print(combo_map)
     print(checkout_map)
 #simply if v of any combo letter is greater than 
@@ -95,6 +98,7 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
 
