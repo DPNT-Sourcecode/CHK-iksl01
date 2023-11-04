@@ -14,36 +14,21 @@ def buy_x_get_for_y(num_x, count_x, deal_value):
     remainder = num_x%count_x
     return deal_total, remainder
 
-def combo_deal(k,v, combo_deal_count,sku_map, total):
-    if combo_deal_count>=3:
-        combo_deal_count-=v
-    else:
-        total+=sku_map[k]*v
-
 def checkout(skus):
     if bool(re.match('^[A-Z]*$', skus)) is False:
         return -1
     sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
     checkout_map = Counter(skus)
-    total=0
-
     combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
         combo_map[l]=copy(checkout_map[l])
-    
     deal_count = sum(combo_map.values())
-    total+=(deal_count//3)*45
+    total=(deal_count//3)*45
     deal_num = deal_count-(deal_count%3)
-    # if deal_num==deal_count:
-    #     for l in ['Z', 'S', 'T', 'Y','X']:
-    #         checkout_map[l]=0
-    # else:
     combo_count=0
     for k,v in combo_map.items():
-        print(k,v)
         while combo_count<deal_num:
             letter_count=0
-            # combo_count+=1
             while letter_count<v and combo_count+letter_count<deal_num:
                 letter_count+=1
             checkout_map[k]-=letter_count
@@ -95,5 +80,6 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(k,total)
     return total
+
 
 
