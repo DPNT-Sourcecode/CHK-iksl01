@@ -1,5 +1,6 @@
 from collections import Counter 
 import re
+from copy import copy
 
 def buy_x_get_y_free_remaining(num_x, num_y, count_x):  
         y_free= num_x//count_x
@@ -28,7 +29,7 @@ def checkout(skus):
     print(checkout_map)
     combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
-        combo_map[l]=checkout_map[l]
+        combo_map[l]=copy(checkout_map[l])
     print(id(combo_map))
     print(id(checkout_map))
     deal_count = sum(combo_map.values())
@@ -92,4 +93,5 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
