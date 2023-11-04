@@ -32,8 +32,7 @@ def checkout(skus):
     print(checkout_map)
     combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
-        v = checkout_map[l]
-        combo_map[l]=v
+        combo_map[l]=1
     print(checkout_map)
     print(combo_map)
     deal_count = sum(combo_map.values())
@@ -115,6 +114,7 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
 
