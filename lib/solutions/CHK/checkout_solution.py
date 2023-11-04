@@ -38,20 +38,21 @@ def checkout(skus):
     if deal_num==deal_count:
         for l in ['Z', 'S', 'T', 'Y','X']:
             checkout_map[l]==0
-    combo_count=0
-    for k,v in combo_map.items():
-        print(k,v)
-        while combo_count<deal_num:
-            letter_count=0
-            # combo_count+=1
-            while letter_count<v:
-                letter_count+=1
-            # checkout_map[k]-=letter_count
-            # print(k,checkout_map[k])
-            combo_count+=letter_count
-    print(combo_count)
-    print(combo_map)
-    print(checkout_map)
+    else:
+        combo_count=0
+        for k,v in combo_map.items():
+            print(k,v)
+            while combo_count<deal_num:
+                letter_count=0
+                # combo_count+=1
+                while letter_count<v:
+                    letter_count+=1
+                # checkout_map[k]-=letter_count
+                # print(k,checkout_map[k])
+                combo_count+=letter_count
+        print(combo_count)
+        print(combo_map)
+        print(checkout_map)
 #simply if v of any combo letter is greater than 
 
     for k,v in checkout_map.items():
@@ -101,5 +102,6 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
