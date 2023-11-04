@@ -43,7 +43,10 @@ def checkout(skus):
             letter_count=0
             while letter_count<v:
                 letter_count+=1
+            print(checkout_map[k])
+            print(checkout_map)
             checkout_map[k]-=letter_count
+            print(checkout_map[k])
             print(letter_count)
         combo_count+=letter_count
     # print(checkout_map)
@@ -111,5 +114,6 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
