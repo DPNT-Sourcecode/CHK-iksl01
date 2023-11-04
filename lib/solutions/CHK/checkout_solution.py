@@ -14,11 +14,7 @@ def buy_x_get_for_y(num_x, count_x, deal_value):
     remainder = num_x%count_x
     return deal_total, remainder
 
-def checkout(skus):
-    if bool(re.match('^[A-Z]*$', skus)) is False:
-        return -1
-    sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
-    checkout_map = Counter(skus)
+def apply_combo_deal(checkout_map):
     combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
         combo_map[l]=copy(checkout_map[l])
@@ -34,6 +30,14 @@ def checkout(skus):
             checkout_map[k]-=letter_count
             combo_count+=letter_count
             break
+    return total, checkout_map
+
+def checkout(skus):
+    if bool(re.match('^[A-Z]*$', skus)) is False:
+        return -1
+    sku_map = {'A':50, 'B':30, 'C':20, 'D':15, 'E':40, 'F':10, 'G':20, 'H':10, 'I':35, 'J':60, 'K':70, 'L':90, 'M':15, 'N':40, 'O':10, 'P':50, 'Q':30, 'R':50, 'S':20, 'T':20, 'U':40, 'V':50, 'W':20, 'X':17, 'Y':20,'Z':21}
+    raw_checkout_map = Counter(skus)
+    total, checkout_map=apply_combo_deal(raw_checkout_map) 
     for k,v in checkout_map.items():
         if k=='A':
             five_deal_total, five_deal_remainder = buy_x_get_for_y(v,5,200)
@@ -80,6 +84,7 @@ def checkout(skus):
             total+=sku_map[k]*v
         print(k,total)
     return total
+
 
 
 
