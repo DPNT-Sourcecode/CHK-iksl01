@@ -29,9 +29,11 @@ def checkout(skus):
     # remainder = combo_deal_count%3
     # print(remainder)
     # total+=(combo_deal_count//3)*45
+    print(checkout_map)
     combo_map={}
     for l in ['Z', 'S', 'T', 'Y','X']:
         combo_map[l]=checkout_map[l]
+    print(checkout_map)
     print(combo_map)
     deal_count = sum(combo_map.values())
     total+=(deal_count//3)*45
@@ -43,13 +45,10 @@ def checkout(skus):
             letter_count=0
             while letter_count<v:
                 letter_count+=1
-            print(checkout_map[k])
-            print(checkout_map)
             checkout_map[k]-=letter_count
-            print(checkout_map[k])
-            print(letter_count)
         combo_count+=letter_count
     # print(checkout_map)
+    # print(combo_map)
             
 
 
@@ -114,6 +113,7 @@ def checkout(skus):
         else:
             total+=sku_map[k]*v
     return total
+
 
 
 
